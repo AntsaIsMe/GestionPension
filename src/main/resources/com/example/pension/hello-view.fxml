@@ -15,7 +15,7 @@
       <children>
          <Pane layoutX="2.0" layoutY="1.0" prefHeight="563.0" prefWidth="420.0" style="-fx-background-color: #AAAAAA;">
             <children>
-            
+
                 <Label fx:id="welcomeText" contentDisplay="CENTER" layoutX="46.0" layoutY="141.0" prefHeight="129.0" prefWidth="268.0" text="      GESTION DES PENSIONS DES RETRAITEES" textAlignment="JUSTIFY" textOverrun="LEADING_ELLIPSIS">
                   <opaqueInsets>
                      <Insets />

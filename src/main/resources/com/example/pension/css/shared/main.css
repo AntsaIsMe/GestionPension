@@ -1,0 +1,26 @@
+.root {
+    -fx-bg: #e9e9e9;
+    -fx-secondary: #9d6a5e;
+    -fx-accents: #86584D;
+}
+
+.button{
+    -fx-padding: 10px;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
+    -fx-background-color: -fx-secondary;
+}
+
+.button:hover{
+    -fx-background-color: -fx-accent;
+}
+
+.btn{
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: white;
+}
+
+.table .colHeader{
+    -fx-background-color: -fx-secondary;
+    -fx-fill: -fx-accent;
+}
