@@ -9,6 +9,7 @@ module com.example.pension {
     requires org.kordamp.ikonli.javafx;
     requires eu.hansolo.tilesfx;
 
+    opens com.example.pension.shared to javafx.fxml;
     opens com.example.pension to javafx.fxml;
     exports com.example.pension;
 }

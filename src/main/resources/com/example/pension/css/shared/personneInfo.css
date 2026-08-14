@@ -1,0 +1,12 @@
+.info-title {
+    -fx-font-size: 1.8em;
+    -fx-text-fill: #a56f63;
+    -fx-font-weight: bold;
+}
+.info-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #86584D;
+}
+.info-value {
+    -fx-text-fill: #333333;
+}

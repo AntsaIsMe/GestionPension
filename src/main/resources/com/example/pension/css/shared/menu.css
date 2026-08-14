@@ -1,0 +1,15 @@
+@import "main.css";
+
+.menu-btn{
+    -fx-padding: 10;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
+    -fx-background-color: -fx-secondary;
+}
+.menu-btn:hover{
+    -fx-background-color: #86584D;
+}
+
+.vbox{
+    -fx-padding: 10 0 0 0;
+}

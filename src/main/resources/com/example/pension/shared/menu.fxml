@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="200.0" prefWidth="140.0" spacing="5.0" style="-fx-background-color: #a56f63;" styleClass="vbox" stylesheets="@../css/shared/menu.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.pension.shared.Menu">
+    <children>
+        <Button fx:id="Pension" maxWidth="Infinity" onAction="#redirect" styleClass="menu-btn" text="Pension" />
+        <Button fx:id="Personne" maxWidth="Infinity" onAction="#redirect" styleClass="menu-btn" text="Personne" />
+        <Button fx:id="Tarif" maxWidth="Infinity" onAction="#redirect" styleClass="menu-btn" text="Tarif" />
+        <Button fx:id="Histogramme" maxWidth="Infinity" onAction="#redirect" styleClass="menu-btn" text="Histogramme" />
+    </children>
+</VBox>
