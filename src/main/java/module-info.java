@@ -3,6 +3,6 @@ module com.pension {
     requires javafx.fxml;
     requires java.sql; // Nécessaire pour PostgreSQL
 
-    opens com.pension to javafx.fxml;
-    exports com.pension;
+    opens com.example.pension to javafx.fxml;
+    exports com.example.pension;
 }
