@@ -34,7 +34,7 @@
                         <Insets />
                      </opaqueInsets>
                   </ComboBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="78.0" prefWidth="440.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ANJARA FITIA Ny Ilaina Handrinasoavina" wrappingWidth="216.55707550048828">
                            <HBox.margin>
@@ -44,7 +44,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="500 Ar" textOrigin="BOTTOM" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="373.0" styleClass="btn" text="Payer">
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="373.0" style="-fx-background-color: #86584D;" styleClass="btn" text="Payer" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
