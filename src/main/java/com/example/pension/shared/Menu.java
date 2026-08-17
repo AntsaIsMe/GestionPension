@@ -38,8 +38,8 @@ public class Menu {
                 break;
 
             case "Histogramme":
-                //fxmlPath = "/com/example/pension/Histogramme/histogramme.fxml";
-                System.out.println("Histogram here");
+                fxmlPath = "/com/example/pension/Histogramme.fxml";
+                //System.out.println("/com/example/pension/Histogramme.fxml");
 
                 break;
 
