@@ -9,6 +9,8 @@ module com.example.pension {
     opens com.example.pension to javafx.fxml;
     opens com.example.pension.controller to javafx.fxml;
     opens com.example.pension.controller.Popup to javafx.fxml;
+    opens com.example.pension.controller.Pension to javafx.fxml;
+    opens com.example.pension.controller.tarifcontroller to javafx.fxml;
     opens com.example.pension.util to javafx.fxml;
     opens com.example.pension.model to javafx.base; // si tu utilises les modèles dans des TableView
 
