@@ -4,6 +4,7 @@ module com.example.pension {
     requires java.sql; // Nécessaire pour PostgreSQL
     requires org.postgresql.jdbc; // Driver PostgreSQL
     requires org.apache.pdfbox;
+    requires org.apache.commons.logging;
 
     opens com.example.pension.shared to javafx.fxml;
     opens com.example.pension to javafx.fxml;

@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:controller="com.example.pension.controller.listPers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #86584D;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.example.pension.controller.listPers" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #86584D;" stylesheets="@../css/shared/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #e9e9e9;" BorderPane.alignment="CENTER">
             <children>
@@ -68,7 +68,8 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                     <columns>
-                        <TableColumn fx:id="colStatut" prefWidth="75.0" text="Statut" />
+                        <TableColumn fx:id="colIM" prefWidth="75.0" text="IM" />
+                        <TableColumn fx:id="colStatut" prefWidth="60.0" text="Statut" />
                         <TableColumn fx:id="colNom" minWidth="-Infinity" prefWidth="119.2" text="Nom" />
                         <TableColumn fx:id="colPrenom" minWidth="-Infinity" prefWidth="220.8" text="Prenom" />
                         <TableColumn fx:id="colDiplome" minWidth="-Infinity" prefWidth="119.2" text="Diplome" />

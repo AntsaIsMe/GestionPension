@@ -30,6 +30,7 @@ public class listPers {
     @FXML private TableColumn<Personne, String> colNom;
     @FXML private TableColumn<Personne, String> colPrenom;
     @FXML private TableColumn<Personne, String> colDiplome;
+    @FXML private TableColumn<Personne, String> colIM;
 
     @FXML private Button infoBtn;
     @FXML private Button modifBtn;
@@ -45,6 +46,7 @@ public class listPers {
 
     @FXML
     public void initialize() {
+        colIM.setCellValueFactory(new PropertyValueFactory<>("im"));
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenoms"));
         colDiplome.setCellValueFactory(new PropertyValueFactory<>("diplome"));

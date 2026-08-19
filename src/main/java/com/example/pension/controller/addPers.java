@@ -41,7 +41,7 @@ public class addPers {
         diplomeCombo.getItems().addAll(
                 "CEPE",
                 "BEPC",
-                "BAC",
+                "BACC",
                 "Licence",
                 "Master",
                 "Doctorat"

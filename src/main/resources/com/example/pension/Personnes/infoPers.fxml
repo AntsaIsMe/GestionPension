@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pension.controller.infoPers">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0" stylesheets="@../css/shared/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pension.controller.infoPers">
     <left>
         <fx:include source="../shared/menu.fxml" />
     </left>
@@ -13,118 +20,128 @@
         <fx:include source="../shared/header.fxml" />
     </top>
     <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox spacing="15.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+            </padding>
             <children>
-                <GridPane prefHeight="68.0" prefWidth="460.0">
+                <!-- En-tête : Nom complet -->
+                <Text fx:id="fullName" fill="#86584d" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Prénom">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                </Text>
+
+                <Separator prefWidth="200.0" />
+
+                <!-- Grille d'informations principales -->
+                <GridPane hgap="20.0" vgap="15.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="10.0" prefWidth="274.8" />
-                        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="225.20001220703125" minWidth="10.0" prefWidth="174.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Text fx:id="fullName" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-                        <HBox prefHeight="58.0" prefWidth="144.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <!-- Date de naissance -->
+                        <HBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                             <children>
-                                <Button fx:id="modifBtn" mnemonicParsing="false" style="-fx-background-color: #86584D;" styleClass="button" text="Modifier" textFill="WHITE" />
-                                <Button fx:id="delBtn" mnemonicParsing="false" style="-fx-background-color: #86584D;" text="Supprimer" textFill="WHITE" />
+                                <Label text="Date de naissance :" textFill="#555555">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Text fx:id="naiss" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
                             </children>
-                            <GridPane.margin>
-                                <Insets top="20.0" />
-                            </GridPane.margin>
+                        </HBox>
+
+                        <!-- Contact -->
+                        <HBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <children>
+                                <Label text="Contact :" textFill="#555555">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Text fx:id="contact" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                            </children>
+                        </HBox>
+
+                        <!-- Situation -->
+                        <HBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <children>
+                                <Label text="Situation :" textFill="#555555">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Text fx:id="situation" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                            </children>
+                        </HBox>
+
+                        <!-- Statut -->
+                        <HBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <Label text="Statut :" textFill="#555555">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Text fx:id="vivant" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                            </children>
                         </HBox>
                     </children>
-                    <padding>
-                        <Insets left="10.0" />
-                    </padding>
                 </GridPane>
-                <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="114.0" prefWidth="460.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+
+                <Separator prefWidth="200.0" />
+
+                <!-- Section Conjoint -->
+                <VBox spacing="10.0">
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance :">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Text>
-                                <Text fx:id="naiss" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-                            </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contact :">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Text>
-                                <Text fx:id="contact" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-                            </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                            <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Situation :">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Text>
-                                <!-- fx:id remplace par situation -->
-                                <Text fx:id="situation" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
-                            </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <children>
-                                <Text fx:id="vivant" strokeType="OUTSIDE" strokeWidth="0.0" text="">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Text>
-                            </children>
-                        </HBox>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Conjoint" GridPane.rowIndex="2">
+                        <Label text="Informations du conjoint" textFill="#86584d">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="15.0" />
                             </font>
-                        </Text>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        </Label>
+                        <GridPane hgap="20.0" vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
                             <children>
-                                <Text fx:id="conjointName" strokeType="OUTSIDE" strokeWidth="0.0" text="">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Text>
+                                <!-- Nom du conjoint -->
+                                <HBox spacing="6.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <children>
+                                        <Label text="Nom &amp; Prénom :" textFill="#555555">
+                                            <font>
+                                                <Font name="System Bold" size="13.0" />
+                                            </font>
+                                        </Label>
+                                        <Text fx:id="conjointName" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                                    </children>
+                                </HBox>
+
+                                <!-- Statut du conjoint -->
+                                <HBox spacing="6.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <children>
+                                        <Label text="Statut :" textFill="#555555">
+                                            <font>
+                                                <Font name="System Bold" size="13.0" />
+                                            </font>
+                                        </Label>
+                                        <Text fx:id="conjointStatut" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                                    </children>
+                                </HBox>
                             </children>
-                            <GridPane.margin>
-                                <Insets top="5.0" />
-                            </GridPane.margin>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                            <children>
-                                <Text fx:id="conjointStatut" strokeType="OUTSIDE" strokeWidth="0.0" text="">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Text>
-                            </children>
-                            <GridPane.margin>
-                                <Insets top="5.0" />
-                            </GridPane.margin>
-                        </HBox>
+                        </GridPane>
                     </children>
-                    <padding>
-                        <Insets left="10.0" top="10.0" />
-                    </padding>
-                </GridPane>
+                </VBox>
+
             </children>
         </VBox>
     </center>
