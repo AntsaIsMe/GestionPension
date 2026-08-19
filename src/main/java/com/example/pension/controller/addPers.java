@@ -17,7 +17,7 @@ public class addPers {
     @FXML private TextField nomInput;
     @FXML private TextField prenomInput;
     @FXML private DatePicker dateNaisPicker;
-    @FXML private TextField diplomeInput;
+    @FXML private ComboBox<String> diplomeCombo;
     @FXML private TextField contactInput;
     @FXML private ComboBox<String> situationCombo;
     @FXML private TextField nomConjointInput;
@@ -38,6 +38,14 @@ public class addPers {
     public void initialize() {
         // Remplit combo situation
         situationCombo.getItems().addAll("Celibataire", "Marié(e)", "Veuf", "Divorcé(e)");
+        diplomeCombo.getItems().addAll(
+                "CEPE",
+                "BEPC",
+                "BAC",
+                "Licence",
+                "Master",
+                "Doctorat"
+        );
     }
 
     // Clic bouton ajouter
@@ -46,7 +54,7 @@ public class addPers {
         String nom = nomInput.getText();
         String prenom = prenomInput.getText();
         LocalDate dateNais = dateNaisPicker.getValue();
-        String diplome = diplomeInput.getText();
+        String diplome = diplomeCombo.getValue();
         String contact = contactInput.getText();
         String situation = situationCombo.getValue();
         String nomConjoint = nomConjointInput.getText();

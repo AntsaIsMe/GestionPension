@@ -66,6 +66,7 @@ public class WinPopup {
                 popupStage.show();
             }
 
+
             return controller;
 
         } catch (IOException e) {

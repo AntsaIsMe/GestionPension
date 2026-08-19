@@ -12,15 +12,10 @@
 }
 
 .button:hover{
-    -fx-background-color: -fx-accent;
+    -fx-background-color: -fx-accents;
 }
 
 .btn{
     -fx-background-color: -fx-secondary;
     -fx-text-fill: white;
-}
-
-.table .colHeader{
-    -fx-background-color: -fx-secondary;
-    -fx-fill: -fx-accent;
 }

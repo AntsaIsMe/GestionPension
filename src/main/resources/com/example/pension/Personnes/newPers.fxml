@@ -52,7 +52,7 @@
                                             <TextField fx:id="nomInput" layoutX="39.0" layoutY="23.0" promptText="Nom" />
                                             <TextField fx:id="prenomInput" layoutX="39.0" layoutY="61.0" promptText="Prenom" />
                                             <DatePicker fx:id="dateNaisPicker" layoutX="39.0" layoutY="101.0" promptText="Date de naissance" />
-                                            <TextField fx:id="diplomeInput" layoutX="39.0" layoutY="147.0" promptText="Diplome" />
+                                            <ComboBox fx:id="diplomeCombo" layoutX="39.0" layoutY="147.0" promptText="Diplome" />
                                             <Separator layoutX="274.0" layoutY="1.0" orientation="VERTICAL" prefHeight="200.0" />
                                         </children>
                                     </Pane>

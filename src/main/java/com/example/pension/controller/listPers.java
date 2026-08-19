@@ -7,15 +7,18 @@ import com.example.pension.util.WinPopup;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,8 +35,13 @@ public class listPers {
     @FXML private Button modifBtn;
     @FXML private Button delBtn;
     @FXML private Button addBtn;
+    @FXML private ComboBox<String> statutCombo;
+    @FXML private TextField searchField;
+    @FXML private Text effectif;
 
     private final PersonneDAO persDao = new PersonneDAO();
+    private final ObservableList<Personne> masterList = FXCollections.observableArrayList();
+    private FilteredList<Personne> filteredList;
 
     @FXML
     public void initialize() {
@@ -44,76 +52,113 @@ public class listPers {
                 new SimpleStringProperty(cellData.getValue().isStatut() ? "Vivant" : "Décédé")
         );
 
+        initComboBox();
+        setupFiltering();
         loadData();
     }
 
-    //get data from Db
-    private void loadData() {
-        List<Personne> liste = persDao.findAll();
-        ObservableList<Personne> observableList = FXCollections.observableArrayList(liste);
-        personneTable.setItems(observableList);
+    private void initComboBox() {
+        statutCombo.getItems().clear();
+        statutCombo.getItems().addAll("Tous", "Vivant", "Décédé");
+        statutCombo.setValue("Tous");
     }
 
-    //popup alert error
+    private void setupFiltering() {
+        filteredList = new FilteredList<>(masterList, p -> true);
+        personneTable.setItems(filteredList);
+
+        // Écoute la recherche textuelle en temps réel
+        searchField.textProperty().addListener((obs, oldVal, newVal) -> filtrerDonnees());
+    }
+
+    private void loadData() {
+        List<Personne> liste = persDao.findAll();
+        masterList.clear();
+        if (liste != null) {
+            masterList.addAll(liste);
+        }
+        filtrerDonnees();
+    }
+
+    @FXML
+    public void filtrerDonnees() {
+        String selection = statutCombo.getValue();
+        String motCle = searchField.getText() == null ? "" : searchField.getText().toLowerCase().trim();
+
+        filteredList.setPredicate(p -> {
+            // 1. Filtre par statut
+            if (selection != null) {
+                if (selection.equals("Vivant") && !p.isStatut()) return false;
+                if (selection.equals("Décédé") && p.isStatut()) return false;
+            }
+
+            // 2. Filtre par recherche texte (Nom, Prénom ou IM)
+            if (!motCle.isEmpty()) {
+                String nom = p.getNom() != null ? p.getNom().toLowerCase() : "";
+                String prenom = p.getPrenoms() != null ? p.getPrenoms().toLowerCase() : "";
+                String im = p.getIm() != null ? p.getIm().toLowerCase() : "";
+
+                return nom.contains(motCle) || prenom.contains(motCle) || im.contains(motCle);
+            }
+
+            return true;
+        });
+
+        updateEffectif();
+    }
+
+    private void updateEffectif() {
+        effectif.setText("Effectifs : " + filteredList.size());
+    }
+
     private void alertSel() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Aucune selection");
+        alert.setTitle("Aucune sélection");
         alert.setHeaderText(null);
-        alert.setContentText("Veuillez selectionner une personne dans le tableau !");
+        alert.setContentText("Veuillez sélectionner une personne dans le tableau !");
         alert.showAndWait();
     }
 
-    //get the person selected
     private Personne getSelected() {
         return personneTable.getSelectionModel().getSelectedItem();
     }
 
     @FXML
     public void openInfo() {
-        //get selected elem
         Personne selected = getSelected();
-        if(selected == null){
+        if (selected == null) {
             alertSel();
             return;
         }
         try {
-            //open new Info
-            //  Charger la vue FXML de la page d'information
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/pension/Personnes/infoPers.fxml"));
             Parent root = loader.load();
 
-            //send Pers
             infoPers controller = loader.getController();
             if (controller != null) {
                 controller.setPersonne(selected);
             }
 
-            //  Remplacer la racine de toute la fenêtre actuelle
             personneTable.getScene().setRoot(root);
 
         } catch (IOException e) {
             System.err.println("Erreur lors du chargement de infoPers.fxml : " + e.getMessage());
             e.printStackTrace();
         }
-
     }
 
-    //modif
     @FXML
     public void modifPop() {
-        // get selected elem
         Personne selected = getSelected();
         if (selected == null) {
             alertSel();
             return;
         }
 
-        // Ouvre popup modification avec objet charge
         modifPers ctrl = WinPopup.openPopup("Personnes/modifPers.fxml", "Modifier Personne", (modifPers controller) -> {
             controller.setPersonne(selected);
         });
 
-        // Si clic enregistrer, sauve en BDD
         if (ctrl != null && ctrl.isSaved()) {
             persDao.update(selected);
             loadData();
@@ -123,10 +168,9 @@ public class listPers {
     @FXML
     public void delPop() {
         Personne selected = getSelected();
-        if(selected == null){
+        if (selected == null) {
             alertSel();
-        }
-        else{
+        } else {
             Popup confirmCtrl = WinPopup.openPopup("confirmSupp.fxml", "Confirmation");
 
             if (confirmCtrl != null && confirmCtrl.isConfirmed()) {
@@ -137,7 +181,7 @@ public class listPers {
     }
 
     @FXML
-    public void addPop(){
+    public void addPop() {
         WinPopup.openPopup("Personnes/newPers.fxml", "Ajouter Personne", (addPers controller) -> {
             controller.setOnSuccess(this::loadData);
         });
