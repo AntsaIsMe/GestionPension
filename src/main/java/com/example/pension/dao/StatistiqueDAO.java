@@ -27,18 +27,31 @@ public class StatistiqueDAO {
     /** Montant total payé par mois (format 'YYYY-MM'), utile pour un histogramme des paiements. */
     public Map<String, Long> montantTotalParMois() {
         Map<String, Long> resultat = new LinkedHashMap<>();
-        String sql = "SELECT to_char(p.date_paiement, 'YYYY-MM') AS mois, SUM(t.montant) AS total " +
-                "FROM payer p JOIN tarif t ON p.num_tarif = t.num_tarif " +
-                "GROUP BY mois ORDER BY mois";
+
+        String sql =
+                "SELECT to_char(p.datepayer, 'YYYY-MM') AS mois, " +
+                        "SUM(t.montant) AS total " +
+                        "FROM payer p " +
+                        "JOIN tarif t ON p.num_tarif = t.num_tarif " +
+                        "GROUP BY mois " +
+                        "ORDER BY mois";
+
         try (Connection cn = DatabaseConnection.getConnection();
              Statement st = cn.createStatement();
              ResultSet rs = st.executeQuery(sql)) {
+
             while (rs.next()) {
-                resultat.put(rs.getString("mois"), rs.getLong("total"));
+                resultat.put(
+                        rs.getString("mois"),
+                        rs.getLong("total")
+                );
+                //System.out.println(resultat);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return resultat;
     }
 
