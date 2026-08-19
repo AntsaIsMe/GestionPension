@@ -33,8 +33,7 @@ public class Menu {
                 break;
 
             case "Tarif":
-                //fxmlPath = "/com/example/pension/Tarif/tarif.fxml";
-                System.out.println("Tarif here");
+                fxmlPath = "/com/example/pension/Tarif/Tarif.fxml";
                 break;
 
             case "Histogramme":

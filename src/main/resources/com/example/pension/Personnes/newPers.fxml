@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="488.0" prefWidth="601.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pension.HelloController">
+<VBox alignment="CENTER" prefHeight="488.0" prefWidth="601.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pension.controller.addPers">
     <padding>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
@@ -25,9 +25,9 @@
                 <font>
                     <Font size="38.0" />
                 </font>
-            <TilePane.margin>
-               <Insets left="90.0" />
-            </TilePane.margin>
+                <TilePane.margin>
+                    <Insets left="90.0" />
+                </TilePane.margin>
             </Text>
         </children>
     </TilePane>
@@ -41,18 +41,18 @@
                                 <children>
                                     <Pane layoutX="309.0" prefHeight="200.0" prefWidth="252.0">
                                         <children>
-                                            <TextField layoutX="71.0" layoutY="24.0" promptText="Contact" />
-                                            <ComboBox layoutX="72.0" layoutY="67.0" prefWidth="150.0" promptText="Situation" visibleRowCount="3" />
-                                            <TextField layoutX="72.0" layoutY="109.0" promptText="Nom du conjoint" />
-                                            <TextField layoutX="72.0" layoutY="150.0" promptText="Prénom du conjoint" />
+                                            <TextField fx:id="contactInput" layoutX="71.0" layoutY="24.0" promptText="Contact" />
+                                            <ComboBox fx:id="situationCombo" layoutX="72.0" layoutY="67.0" prefWidth="150.0" promptText="Situation" visibleRowCount="3" />
+                                            <TextField fx:id="nomConjointInput" layoutX="72.0" layoutY="109.0" promptText="Nom du conjoint" />
+                                            <TextField fx:id="prenomConjointInput" layoutX="72.0" layoutY="150.0" promptText="Prénom du conjoint" />
                                         </children>
                                     </Pane>
                                     <Pane prefHeight="200.0" prefWidth="245.0">
                                         <children>
-                                            <TextField layoutX="39.0" layoutY="23.0" promptText="Nom" />
-                                            <TextField layoutX="39.0" layoutY="61.0" promptText="Prenom" />
-                                            <DatePicker layoutX="39.0" layoutY="101.0" promptText="Date de naissance" />
-                                            <TextField layoutX="39.0" layoutY="147.0" promptText="Diplome" />
+                                            <TextField fx:id="nomInput" layoutX="39.0" layoutY="23.0" promptText="Nom" />
+                                            <TextField fx:id="prenomInput" layoutX="39.0" layoutY="61.0" promptText="Prenom" />
+                                            <DatePicker fx:id="dateNaisPicker" layoutX="39.0" layoutY="101.0" promptText="Date de naissance" />
+                                            <TextField fx:id="diplomeInput" layoutX="39.0" layoutY="147.0" promptText="Diplome" />
                                             <Separator layoutX="274.0" layoutY="1.0" orientation="VERTICAL" prefHeight="200.0" />
                                         </children>
                                     </Pane>
@@ -64,18 +64,18 @@
             </VBox>
         </children>
     </StackPane>
-   <VBox prefHeight="77.0" prefWidth="581.0" spacing="10.0">
-      <children>
-         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="535.0" style="-fx-background-color: #86584D;" text="Ajouter" textFill="WHITE" />
-         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="535.0" style="-fx-background-color: #86584D;" text="Annuler" textFill="WHITE" />
-      </children>
-      <VBox.margin>
-         <Insets top="10.0" />
-      </VBox.margin>
-      <padding>
-         <Insets left="20.0" top="10.0" />
-      </padding>
-   </VBox>
+    <VBox prefHeight="77.0" prefWidth="581.0" spacing="10.0">
+        <children>
+            <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" prefHeight="25.0" prefWidth="535.0" style="-fx-background-color: #86584D;" text="Ajouter" textFill="WHITE" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="25.0" prefWidth="535.0" style="-fx-background-color: #86584D;" text="Annuler" textFill="WHITE" />
+        </children>
+        <VBox.margin>
+            <Insets top="10.0" />
+        </VBox.margin>
+        <padding>
+            <Insets left="20.0" top="10.0" />
+        </padding>
+    </VBox>
 
     <Label fx:id="welcomeText" />
 </VBox>

@@ -1,15 +1,20 @@
 package com.pension;
 
+import com.example.pension.database.DatabaseConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        
         // Load the main view layout from FXML
         Parent root = FXMLLoader.load(getClass().getResource("/com/pension/view/main-view.fxml"));
         Scene scene = new Scene(root, 1000, 600);

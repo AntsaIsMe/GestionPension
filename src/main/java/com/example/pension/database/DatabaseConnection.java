@@ -7,9 +7,10 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     // Adapte ces 3 valeurs à ton environnement PostgreSQL
-    private static final String URL = "jdbc:postgresql://localhost:5432/gestion_pension";
+   private static final String URL = "jdbc:postgresql://localhost:5432/gestion_pension";
+
     private static final String USER = "postgres";
-    private static final String PASSWORD = "postgres";
+    private static final String PASSWORD = "root";
 
     private static Connection connection;
 

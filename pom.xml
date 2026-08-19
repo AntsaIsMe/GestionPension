@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.pension</groupId>
+    <groupId>com.example.pension</groupId>
     <artifactId>gestion-pension</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -32,8 +32,17 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.13</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>fontbox</artifactId>
+            <version>3.0.1</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <!-- Plugin de compilation réactualisé pour gérer le module-info -->
@@ -53,7 +62,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>com.pension/com.pension.App</mainClass>
+                    <mainClass>com.example.pension/com.example.pension.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>

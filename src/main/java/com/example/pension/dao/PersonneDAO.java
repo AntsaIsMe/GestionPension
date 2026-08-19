@@ -19,7 +19,7 @@ public class PersonneDAO {
     private final ConjointDAO conjointDAO = new ConjointDAO();
 
     public boolean create(Personne p) {
-        String sql = "INSERT INTO personne (im, nom, prenoms, datenais, diplome, contact, statut, situation, nom_conjoint, prenom_conjoint) " +
+        String sql = "INSERT INTO personne (im, nom, prenom, datenais, diplome, contact, statut, situation, nomconjoint, prenomconjoint) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection cn = DatabaseConnection.getConnection();
              PreparedStatement ps = cn.prepareStatement(sql)) {
@@ -96,8 +96,8 @@ public class PersonneDAO {
     }
 
     public boolean update(Personne p) {
-        String sql = "UPDATE personne SET nom = ?, prenoms = ?, datenais = ?, diplome = ?, contact = ?, " +
-                "statut = ?, situation = ?, nom_conjoint = ?, prenom_conjoint = ? WHERE im = ?";
+        String sql = "UPDATE personne SET nom = ?, prenom = ?, datenais = ?, diplome = ?, contact = ?, " +
+                "statut = ?, situation = ?, nomconjoint = ?, prenomconjoint = ? WHERE im = ?";
         try (Connection cn = DatabaseConnection.getConnection();
              PreparedStatement ps = cn.prepareStatement(sql)) {
             fillPersonneParams(ps, p, true);
@@ -168,14 +168,14 @@ public class PersonneDAO {
         return new Personne(
                 rs.getString("im"),
                 rs.getString("nom"),
-                rs.getString("prenoms"),
+                rs.getString("prenom"),
                 dateNais != null ? dateNais.toLocalDate() : null,
                 rs.getString("diplome"),
                 rs.getString("contact"),
                 rs.getBoolean("statut"),
                 rs.getString("situation"),
-                rs.getString("nom_conjoint"),
-                rs.getString("prenom_conjoint")
+                rs.getString("nomconjoint"),
+                rs.getString("prenomconjoint")
         );
     }
 }
