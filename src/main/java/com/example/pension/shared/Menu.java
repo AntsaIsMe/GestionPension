@@ -33,7 +33,7 @@ public class Menu {
                 break;
 
             case "Tarif":
-                fxmlPath = "/com/example/pension/Tarif/Tarif.fxml";
+                fxmlPath = "/com/example/pension/Tarif/ListTarif.fxml";
                 break;
 
             case "Histogramme":
