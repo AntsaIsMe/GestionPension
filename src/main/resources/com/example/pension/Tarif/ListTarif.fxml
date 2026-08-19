@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.pension.controller.tarifcontroller.ListTarif" >
     <left>
         <fx:include source="../shared/menu.fxml" />
     </left>
@@ -38,7 +38,7 @@
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #86584D;" text="AJOUTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #86584D;" fx:id="btnAjouter" onAction="#handleOuvrirAjout" text="AJOUTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
                         <Font name="Berlin Sans FB" size="12.0" />
                      </font>
@@ -48,18 +48,18 @@
                   <Insets bottom="10.0" top="10.0" />
                </FlowPane.margin>
             </GridPane>
-            <TableView prefHeight="221.0" prefWidth="461.0" style="-fx-background-color: #FFFFFF;">
+            <TableView prefHeight="221.0" prefWidth="461.0" style="-fx-background-color: #FFFFFF;" fx:id="tableTarif">
                <columns>
-                  <TableColumn prefWidth="67.0" text="Numero" />
-                  <TableColumn prefWidth="150.0" text="Categorie" />
-                  <TableColumn minWidth="0.0" prefWidth="144.0" text="Diplôme" />
-                  <TableColumn minWidth="0.0" prefWidth="98.0" text="Montant" />
+                  <TableColumn prefWidth="67.0" text="Numero" fx:id="colNum"/>
+                  <TableColumn prefWidth="150.0" text="Categorie" fx:id="colCat" />
+                  <TableColumn minWidth="0.0" prefWidth="144.0" text="Diplôme" fx:id="colDip"/>
+                  <TableColumn minWidth="0.0" prefWidth="98.0" text="Montant" fx:id="colMon"/>
                </columns>
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="444.0" spacing="6.0" style="-fx-background-color: #e9e9e9;">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #86584D;" text="Modifier" textFill="WHITE" />
-                  <Button alignment="TOP_RIGHT" mnemonicParsing="false" style="-fx-background-color: #86584D;" text="Supprimer" textFill="WHITE" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: #86584D;"  fx:id="btnModifier" onAction="#handleOuvrirModifier" text="Modifier" textFill="WHITE" />
+                  <Button alignment="TOP_RIGHT" mnemonicParsing="false" style="-fx-background-color: #86584D;" fx:id="btnSupprimer" onAction="#handleSupprimer" text="Supprimer" textFill="WHITE" />
                </children>
                <FlowPane.margin>
                   <Insets left="10.0" top="10.0" />
